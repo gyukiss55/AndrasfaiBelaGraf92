@@ -163,6 +163,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CHAR:
     {
         switch (wParam) {
+        case '2':
         case '3':
         case '4':
         case '5':
@@ -175,7 +176,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case '0':
         case '1':
-        case '2':
             numberAnd = (unsigned int) (wParam - '0' + 10);
             InvalidateRect(hWnd, NULL, TRUE);
             break;
@@ -186,7 +186,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             numberAnd = 92;
             InvalidateRect(hWnd, NULL, TRUE);
             break;
-       }
+        case '+':
+            numberAnd = numberAnd + 1;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        case '*':
+            numberAnd = numberAnd + 10;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        case '-':
+            numberAnd = numberAnd - 1;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        }
     }
 
     case WM_PAINT:
